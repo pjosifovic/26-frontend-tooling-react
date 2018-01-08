@@ -22,16 +22,24 @@
 Your lab directory must include  
 * **README.md** -- with a documention about your lab
 * **.gitignore** -- with a robust gitignore
-* **.eslintrc** -- with the class .eslintrc file
+* **.eslintrc.json** -- with the class .eslintrc.json file
 * **.eslintignore** -- with the class .eslintignore
 * **.babelrc** -- with all dependencies and dev-dependencies 
 * **package.json** -- with all dependencies and dev-dependencies 
-* **yarn.lock** -- with the yarn lockfile
+* **package-lock.json** -- with the package.json lockfile
 * **webpack.config.js** -- with webpack config
-* **src/** -- conating the froned code
+* **src/** -- conating the frontend code
 * **src/main.js** -- containing the entire app
 * **src/style** -- containing your sass
-* **src/style/main.scss** -- containing the froned code
+* **src/style/main.scss** -- containing the frontend code
+
+* add a new file `.babelrc` that looks like:
+```
+{
+  "presets": ["es2015", "react"],
+  "plugins": ["transform-object-rest-spread"]
+}
+```
  
 #### Feature Tasks  
 Create the following component
@@ -40,9 +48,9 @@ Create the following component
 * Should have a property on the state called content 
 * Should create a view with the following display
   * A heading with the title "Generate Cowsay Lorem"
-  * A Button that displays "click me"
+  * A Button that says "click me"
     * `onClick` the button should generate new content on the app state using cowsay and faker
-  * A pre tag that displays the App's state's content 
+  * A pre tag that displays the App's state content 
 
 ####  Documentation  
 Write a description of the project in your README.md
