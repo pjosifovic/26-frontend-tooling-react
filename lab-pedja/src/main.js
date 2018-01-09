@@ -3,28 +3,56 @@
 import './style/main.scss';
 import React from 'react';
 import ReactDom from 'react-dom';
-import {say, tux} from 'cowsay';
+import {say, TUX, GOAT, MOOSE, SATANIC} from 'cowsay';
 import faker from 'faker';
 
 
 class Cow extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {};
-    this.state.content = "click button above";
+    this.state = {
+      content: "click button above",
+      cow: '',
+    };
+
     this.click = this.click.bind(this);
+    this.menuAnimal = this.menuAnimal.bind(this);
   }
 
   click() {
-    const content = faker.hacker.phrase();
-    this.setState({ content })
+    this.setState({ content: faker.hacker.phrase() })
+  }
+
+  menuAnimal(event) {
+    if (event.target.value === 'COW') {
+      this.setState({ cow: ''})
+    }
+    if (event.target.value === 'GOAT') {
+      this.setState({ cow: GOAT})
+    }
+    if (event.target.value === 'MOOSE') {
+      this.setState({ cow: MOOSE})
+    }
+    if (event.target.value === 'TUX') {
+      this.setState({ cow: TUX})
+    }
+    if (event.target.value === 'SATANIC') {
+      this.setState({ cow: SATANIC})
+    }
   }
 
   render() {
     return (
       <div>
         <button onClick={this.click}>click me</button>
-        <div>{say({ text: this.state.content })}</div>
+        <select onChange={this.menuAnimal}>
+          <option value='COW'>Cow</option>
+          <option value='GOAT'>Goat</option>
+          <option value='MOOSE'>Moose</option>
+          <option value='TUX'>Tux</option>
+          <option value='SATANIC'>Satanic</option>
+        </select>
+        <pre>{say({ text: this.state.content, cow: this.state.cow })}</pre>
       </div>
     )
   }
